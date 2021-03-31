@@ -1,4 +1,4 @@
-# 1_WorkDo
+# 1_WorkDo (Ada dokumentasi video di paling bawah)
 
 Hasil:
 
