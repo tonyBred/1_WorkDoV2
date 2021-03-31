@@ -11,13 +11,13 @@ HOME:
 Detail salah satu Tugas:
 
 
-![](Dokumentasi/2.jpeg)
+![](Dokumentasi/3.jpeg)
 
 
 Profil:
 
 
-![](Dokumentasi/3.jpeg)
+![](Dokumentasi/2.jpeg)
 
 
 Video:
