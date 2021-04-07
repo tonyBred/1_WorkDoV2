@@ -18,16 +18,17 @@ public class DisplayDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_detail);
 
         Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
 
         TextView judul = findViewById(R.id.topikDisplayText);
         TextView matkul = findViewById(R.id.matkulDisplayText);
         TextView deadline = findViewById(R.id.deadlineDisplayText);
         TextView desc = findViewById(R.id.descDisplayText);
 
-        judul.setText(intent.getStringExtra("Judul"));
-        matkul.setText(intent.getStringExtra("Matkul"));
-        deadline.setText(intent.getStringExtra("Deadline"));
-        desc.setText(intent.getStringExtra("Desc"));
+        judul.setText(bundle.getString("Judul"));
+        matkul.setText(bundle.getString("Matkul"));
+        deadline.setText(bundle.getString("Deadline"));
+        desc.setText(bundle.getString("Desc"));
 
     }
 }

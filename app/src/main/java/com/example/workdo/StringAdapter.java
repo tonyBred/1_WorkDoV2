@@ -1,6 +1,7 @@
 package com.example.workdo;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,10 +45,15 @@ class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DisplayDetailActivity.class);
-                intent.putExtra("Judul", list.get(position).getTopik());
-                intent.putExtra("Matkul", list.get(position).getMatkul());
-                intent.putExtra("Deadline", list.get(position).getDeadline());
-                intent.putExtra("Desc", list.get(position).getDesc());
+                Bundle bundle = new Bundle();
+
+                bundle.putString("Judul", list.get(position).getTopik());
+                bundle.putString("Matkul", list.get(position).getMatkul());
+                bundle.putString("Deadline", list.get(position).getDeadline());
+                bundle.putString("Desc", list.get(position).getDesc());
+
+                intent.putExtras(bundle);
+
                 v.getContext().startActivities(new Intent[]{intent});
             }
         });
