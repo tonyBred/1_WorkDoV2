@@ -30,9 +30,12 @@ public class FirstFragment extends Fragment {
 
         //Hardcode data
         LinkedList<Tugas> listTugas = new LinkedList<Tugas>();
-        listTugas.add(new Tugas("Membuat view template", "Pengembangan Perangkat Lunak 1", "31/03/2021", "Buat view tabel mahasiswa di template"));
-        listTugas.add(new Tugas("Pelajari Fragment", "Pemrograman Perangkat Begerak", "30/03/2021" , "Pelajari pragement dan implementasikan bersama recycler activity"));
+        listTugas.add(new Tugas("Membuat view template", "Pengembangan Perangkat Lunak 1 Teori", "31/03/2021", "Buat view tabel mahasiswa di template"));
+        listTugas.add(new Tugas("Pelajari Fragment", "Pemrograman Perangkat Begerak Praktej", "30/03/2021" , "Pelajari pragement dan implementasikan bersama recycler activity"));
         listTugas.add(new Tugas("Membuat artikel perjuangan", "Pancasilla", "05/04/2021", "Buat artikel tentang ancaman bangsa"));
+        listTugas.add(new Tugas("Perbaiki ppt topik besar", "Proyek Perangkat Lunak 4", "`11/04/2021", "Perbaiki ppt dengan tambahakn hardware detail"));
+        listTugas.add(new Tugas("Buat Login session pada template", "Pengembangan Perangkat Lunak 1 Praktek", "12/04/2021", "Tambah SESSION dan masukan username pada template"));
+        listTugas.add(new Tugas("Buat/cari 50 Data Kuantitatif dan kelompokan", "Statistika Probibilitas", "10/04/2021", "Data boleh sekunder asal cantumkan referensinya"));
 
         // Add the following lines to create RecyclerView
         recyclerView = view.findViewById(R.id.recyclerview);
