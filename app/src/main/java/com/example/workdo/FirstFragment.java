@@ -35,7 +35,7 @@ public class FirstFragment extends Fragment {
         listTugas.add(new Tugas("Membuat artikel perjuangan", "Pancasilla", "05/04/2021", "Buat artikel tentang ancaman bangsa"));
         listTugas.add(new Tugas("Perbaiki ppt topik besar", "Proyek Perangkat Lunak 4", "`11/04/2021", "Perbaiki ppt dengan tambahakn hardware detail"));
         listTugas.add(new Tugas("Buat Login session pada template", "Pengembangan Perangkat Lunak 1 Praktek", "12/04/2021", "Tambah SESSION dan masukan username pada template"));
-        listTugas.add(new Tugas("Buat/cari 50 Data Kuantitatif dan kelompokan", "Statistika Probibilitas", "10/04/2021", "Data boleh sekunder asal cantumkan referensinya"));
+        listTugas.add(new Tugas("Cari/buat 50 data kuantitaif", "Statitiska dan Probabilitas", "12/04/2021", "Data boleh sekunder asal cantumkan referensinya"));
 
         // Add the following lines to create RecyclerView
         recyclerView = view.findViewById(R.id.recyclerview);
