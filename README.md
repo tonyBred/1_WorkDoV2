@@ -5,7 +5,7 @@ Hasil:
 
 HOME:
 
-![](Dokumentasi/1.1.jpeg)
+![](Dokumentasi/3.1.jpeg)
 
 
 Detail salah satu Tugas:
@@ -17,7 +17,7 @@ Detail salah satu Tugas:
 Profil:
 
 
-![](Dokumentasi/3.1.jpeg)
+![](Dokumentasi/1.1.jpeg)
 
 
 Video:
