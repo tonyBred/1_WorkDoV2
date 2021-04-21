@@ -1,13 +1,18 @@
 package com.example.workdo;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Parcelable;
 import android.view.View;
 
 import android.view.Menu;
@@ -19,17 +24,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container, new FirstFragment()).commit();
+
+        BottomNavigationView bottomNavigation  = findViewById(R.id.bottomNavigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_work:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, new FirstFragment()).commit();
+                        break;
+                    case R.id.action_add:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, new ThirdFragment()).commit();
+                        break;
+                    case R.id.action_profile:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, new SecondFragment()).commit();
+                        break;
+                }
+                return true;
             }
         });
+
     }
 
     @Override

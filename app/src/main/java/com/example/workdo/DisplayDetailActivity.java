@@ -36,13 +36,5 @@ public class DisplayDetailActivity extends AppCompatActivity {
         deadline.setText(bundle.getString("Deadline"));
         desc.setText(bundle.getString("Desc"));
 
-        ImageButton button = findViewById(R.id.buttonBack);
-        button.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                Intent in = new Intent(view.getContext(), MainActivity.class);
-                startActivity(in);
-            }
-        });
-
     }
 }

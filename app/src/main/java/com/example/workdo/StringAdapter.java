@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
+import java.text.DateFormatSymbols;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -37,9 +39,12 @@ class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+
+        String tgl = list.get(position).getDeadline().get(Calendar.DAY_OF_MONTH)+"-"+new DateFormatSymbols().getMonths()[list.get(position).getDeadline().get(Calendar.MONTH)]+"-"+list.get(position).getDeadline().get(Calendar.DAY_OF_YEAR);
+
         holder.getViewTopik().setText(list.get(position).getTopik());
         holder.getViewMatkul().setText(list.get(position).getMatkul());
-        holder.getViewDeadline().setText(list.get(position).getDeadline());
+        holder.getViewDeadline().setText(tgl);
         holder.getButtonDetail();
         holder.getButtonDetail().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +54,7 @@ class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
                 bundle.putString("Judul", list.get(position).getTopik());
                 bundle.putString("Matkul", list.get(position).getMatkul());
-                bundle.putString("Deadline", list.get(position).getDeadline());
+                bundle.putString("Deadline", tgl);
                 bundle.putString("Desc", list.get(position).getDesc());
 
                 intent.putExtras(bundle);

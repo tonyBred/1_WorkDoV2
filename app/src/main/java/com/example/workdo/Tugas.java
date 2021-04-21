@@ -1,12 +1,15 @@
 package com.example.workdo;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Tugas {
     private String topik;
     private String matkul;
-    private String deadline;
+    private Calendar deadline;
     private String desc;
 
-    public Tugas(String topik, String matkul, String deadline, String desc){
+    public Tugas(String topik, String matkul, Calendar deadline, String desc){
         this.topik = topik;
         this.matkul = matkul;
         this.deadline = deadline;
@@ -21,7 +24,7 @@ public class Tugas {
         return matkul;
     }
 
-    public String getDeadline(){
+    public Calendar getDeadline(){
         return deadline;
     }
 
