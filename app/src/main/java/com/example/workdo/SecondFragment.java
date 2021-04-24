@@ -46,7 +46,7 @@ public class SecondFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerviewsecond);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new StringAdapterSecond(listTugas));
+        recyclerView.setAdapter(new StringAdapter(listTugas));
 
         return view;
     }
