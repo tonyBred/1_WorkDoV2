@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_work"
+        android:id="@+id/action_upcoming"
         android:icon="@drawable/ic_work"
-        android:title="Work"/>
+        android:title="Upcoming"/>
+
+    <item
+        android:id="@+id/action_overdue"
+        android:icon="@drawable/ic_overdue"
+        android:title="Overdue"/>
 
     <item
         android:id="@+id/action_add"
         android:icon="@drawable/ic_add"
         android:title="Add"/>
-
-    <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/ic_profile"
-        android:title="Profile"/>
 
 </menu>

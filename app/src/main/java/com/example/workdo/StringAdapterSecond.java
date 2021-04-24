@@ -16,11 +16,11 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Random;
 
-class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+class StringAdapterSecond extends RecyclerView.Adapter<RecyclerViewHolder> {
     private LinkedList<Tugas> list = new LinkedList<Tugas>();
     private int index = 0;
 
-    public StringAdapter(LinkedList listTugas) {
+    public StringAdapterSecond(LinkedList listTugas) {
         this.list = listTugas;
     }
 

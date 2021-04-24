@@ -20,6 +20,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static Dummy dummy = new Dummy();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +35,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_work:
+                    case R.id.action_upcoming:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.container, new FirstFragment()).commit();
+                        break;
+                    case R.id.action_overdue:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, new SecondFragment()).commit();
                         break;
                     case R.id.action_add:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.container, new ThirdFragment()).commit();
-                        break;
-                    case R.id.action_profile:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container, new SecondFragment()).commit();
                         break;
                 }
                 return true;
@@ -72,5 +74,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public Dummy getDummy(){
+        return dummy;
+    }
+
+    public void setDummy(Dummy dum){
+        this.dummy = dum;
     }
 }

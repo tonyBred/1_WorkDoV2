@@ -14,6 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,8 +34,16 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-        Dummy dummy = new Dummy();
-        LinkedList<Tugas> listTugas = dummy.getListTugas();
+        Dummy dummy = ((MainActivity)getContext()).getDummy();
+        LinkedList<Tugas> listTugas = new LinkedList<Tugas>();
+
+        Calendar cal = GregorianCalendar.getInstance();
+
+        for(int i=0; i<dummy.getListTugas().size();i++){
+            if(dummy.getListTugas().get(i).getDeadline().getTime().after(cal.getTime())){
+                listTugas.add(dummy.getListTugas().get(i));
+            }
+        }
 
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
