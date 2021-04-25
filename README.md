@@ -3,24 +3,24 @@
 Hasil:
 
 
-HOME:
+Upcoming:
 
-![](Dokumentasi/3.1.jpeg)
-
-
-Detail salah satu Tugas:
+![](Dokumentasi/Upcoming.jpeg)
 
 
-![](Dokumentasi/2.1.jpeg)
+Overdue:
 
 
-Profil:
+![](Dokumentasi/Overdue.jpeg)
 
 
-![](Dokumentasi/1.1.jpeg)
+Add Data:
+
+
+![](Dokumentasi/Addjpeg)
 
 
 Video:
-![Demo](https://user-images.githubusercontent.com/73786777/114611906-b1c98400-9ccb-11eb-9ab4-b5c431f360da.mp4)
+![Demo](https://user-images.githubusercontent.com/73786777/115982562-5b5f1e00-a5c6-11eb-9ae3-e42ff4b51b62.mp4)
 
 
