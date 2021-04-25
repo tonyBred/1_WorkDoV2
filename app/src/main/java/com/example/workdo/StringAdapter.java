@@ -40,7 +40,29 @@ class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 
-        String tgl = list.get(position).getDeadline().get(Calendar.DAY_OF_MONTH)+"-"+new DateFormatSymbols().getMonths()[list.get(position).getDeadline().get(Calendar.MONTH)]+"-"+list.get(position).getDeadline().get(Calendar.YEAR);
+        String tgl = list.get(position).getDeadline().get(Calendar.DAY_OF_MONTH)+"-"
+                +new DateFormatSymbols().getMonths()[list.get(position).getDeadline().get(Calendar.MONTH)]+"-"
+                +list.get(position).getDeadline().get(Calendar.YEAR);
+
+        String hour = "null";
+        if(list.get(position).getDeadline().get(Calendar.HOUR_OF_DAY) < 10){
+            hour = "0"+list.get(position).getDeadline().get(Calendar.HOUR_OF_DAY);
+        }else{
+            hour = ""+list.get(position).getDeadline().get(Calendar.HOUR_OF_DAY);
+        }
+
+        String minute = "null";
+        if(list.get(position).getDeadline().get(Calendar.MINUTE) < 10){
+            minute = "0"+list.get(position).getDeadline().get(Calendar.MINUTE);
+        }else{
+            minute = ""+list.get(position).getDeadline().get(Calendar.MINUTE);
+        }
+
+        String tglWithHour = list.get(position).getDeadline().get(Calendar.DAY_OF_MONTH)+"-"
+                +new DateFormatSymbols().getMonths()[list.get(position).getDeadline().get(Calendar.MONTH)]+"-"
+                +list.get(position).getDeadline().get(Calendar.YEAR)+" Pukul: "
+                +hour+"."
+                +minute;
 
         holder.getViewTopik().setText(list.get(position).getTopik());
         holder.getViewMatkul().setText(list.get(position).getMatkul());
@@ -54,7 +76,7 @@ class StringAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
                 bundle.putString("Judul", list.get(position).getTopik());
                 bundle.putString("Matkul", list.get(position).getMatkul());
-                bundle.putString("Deadline", tgl);
+                bundle.putString("Deadline", tglWithHour);
                 bundle.putString("Desc", list.get(position).getDesc());
 
                 intent.putExtras(bundle);
