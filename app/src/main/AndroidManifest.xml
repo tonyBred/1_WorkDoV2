@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.workdo">
+    package="com.example.workdoRoom">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_bg_round"
-        android:label="@string/app_name"
+        android:label="WorkDoRoom"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkDo">
-        <activity android:name=".DisplayDetailActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name="com.example.workdoRoom.DisplayDetailActivity"
+            android:parentActivityName="com.example.workdoRoom.MainActivity">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.workdoRoom.MainActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.workdoRoom.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.WorkDo.NoActionBar">
             <intent-filter>

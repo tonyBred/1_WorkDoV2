@@ -1,31 +1,37 @@
-package com.example.workdo;
+package com.example.workdoRoom;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.os.Parcelable;
-import android.view.View;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.GregorianCalendar;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static Dummy dummy = new Dummy();
+    public TugasViewModel tugasViewModel;
+
+    public void setTugasViewModel(TugasViewModel tugasViewModel){
+        this.tugasViewModel = tugasViewModel;
+    }
+
+    public TugasViewModel getTugasViewModel(){
+        return this.tugasViewModel;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tugasViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TugasViewModel.class);
+        //tugasViewModel.deleteAll();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, new FirstFragment()).commit();
@@ -74,13 +80,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public Dummy getDummy(){
-        return dummy;
-    }
-
-    public void setDummy(Dummy dum){
-        this.dummy = dum;
     }
 }

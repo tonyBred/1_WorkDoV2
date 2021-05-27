@@ -1,28 +1,26 @@
-package com.example.workdo;
+package com.example.workdoRoom;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
-import java.util.List;
 
 public class SecondFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
+    private TugasViewModel mTugasViewModel;
 
     @Override
     public View onCreateView(
@@ -32,21 +30,25 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-        Dummy dummy = ((MainActivity)getContext()).getDummy();
-        LinkedList<Tugas> listTugas = new LinkedList<Tugas>();
-
-        Calendar cal = GregorianCalendar.getInstance();
-
-        for(int i=0; i<dummy.getListTugas().size();i++){
-            if(dummy.getListTugas().get(i).getDeadline().getTime().before(cal.getTime())){
-                listTugas.add(dummy.getListTugas().get(i));
-            }
+        try{
+            mTugasViewModel = ((MainActivity)getActivity()).tugasViewModel;
+        }catch (NullPointerException ex){
+            ex.getMessage();
         }
 
-        recyclerView = view.findViewById(R.id.recyclerviewsecond);
-        recyclerView.setHasFixedSize(true);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewsecond);
+        final TugasListAdapter adapter = new TugasListAdapter(new TugasListAdapter.TugasDiff());
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new StringAdapter(listTugas));
+        recyclerView.setAdapter(adapter);
+
+        try{
+            mTugasViewModel.getAllTugasOverdue().observe(this.getActivity(), words -> {
+                // Update the cached copy of the words in the adapter.
+                adapter.submitList(words);
+            });
+        }catch(NullPointerException ex){
+            ex.getMessage();
+        }
 
         return view;
     }

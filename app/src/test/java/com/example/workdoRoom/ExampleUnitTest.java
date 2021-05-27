@@ -1,4 +1,4 @@
-package com.example.workdo;
+package com.example.workdoRoom;
 
 import org.junit.Test;
 

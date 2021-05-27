@@ -1,8 +1,12 @@
-package com.example.workdo;
+package com.example.workdoRoom;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +18,18 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
+
+import static android.app.Activity.RESULT_OK;
+import static java.sql.DriverManager.println;
 
 public class ThirdFragment extends Fragment {
 
@@ -72,20 +83,27 @@ public class ThirdFragment extends Fragment {
 
         EditText dscText = view.findViewById(R.id.editTextDsc);
 
-        Dummy dummy = ((MainActivity)getContext()).getDummy();
-        LinkedList<Tugas> listTugas = dummy.getListTugas();
 
         Button button = view.findViewById(R.id.buttonSubmit);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                listTugas.add(new Tugas(
-                        titleText.getText().toString(),
-                        matkulText.getText().toString(),
-                        new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), 00),
-                        dscText.getText().toString()
-                ));
 
-                ((MainActivity)getContext()).setDummy(dummy);
+                Tugas tugas = new Tugas(titleText.getText().toString(),
+                        matkulText.getText().toString(),
+                        new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), 00).getTimeInMillis(),
+                        dscText.getText().toString(), (cal.compareTo(GregorianCalendar.getInstance()) > 0) ? 0 : 1);
+
+                try{
+                    ((MainActivity)getActivity()).tugasViewModel.insert(tugas);
+                    ((MainActivity)getActivity()).tugasViewModel.getCount().observe(getActivity(), new Observer<Integer>() {
+                        @Override
+                        public void onChanged(Integer integer) {
+                            Log.i("DEBUG_TAG", String.valueOf(integer));
+                        }
+                    });
+                }catch (NullPointerException ex){
+                    ex.getMessage();
+                }
 
                 titleText.setText("");
                 matkulText.setText("");
